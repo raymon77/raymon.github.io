@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Raymon" />
+
+
+
+<meta name="description" content="关于Angular的十问十答系列，意在梳理Angular框架相关的知识架构，希望能对这部分知识形成一个完整的回路有所帮助。至于本系列具体会写几篇，我也还不确定，毕竟是从头开始梳理，但是难度系数肯定是逐渐增强的。第一篇呢，是入门级，不过更新仍然不一定按照顺序来，想到哪了，就写到哪儿，就这么任性。 1.什么是MVC? 使用MVC的优点是什么？">
+<meta name="keywords" content="Anguluar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Angular的十问十答(一)">
+<meta property="og:url" content="http://celinez.cn/2017/06/16/05.关于Angular的十问十答-一/index.html">
+<meta property="og:site_name" content="Raymon&#39;s Blog">
+<meta property="og:description" content="关于Angular的十问十答系列，意在梳理Angular框架相关的知识架构，希望能对这部分知识形成一个完整的回路有所帮助。至于本系列具体会写几篇，我也还不确定，毕竟是从头开始梳理，但是难度系数肯定是逐渐增强的。第一篇呢，是入门级，不过更新仍然不一定按照顺序来，想到哪了，就写到哪儿，就这么任性。 1.什么是MVC? 使用MVC的优点是什么？">
+<meta property="og:updated_time" content="2017-06-16T12:18:32.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Angular的十问十答(一)">
+<meta name="twitter:description" content="关于Angular的十问十答系列，意在梳理Angular框架相关的知识架构，希望能对这部分知识形成一个完整的回路有所帮助。至于本系列具体会写几篇，我也还不确定，毕竟是从头开始梳理，但是难度系数肯定是逐渐增强的。第一篇呢，是入门级，不过更新仍然不一定按照顺序来，想到哪了，就写到哪儿，就这么任性。 1.什么是MVC? 使用MVC的优点是什么？">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Raymon&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>关于Angular的十问十答(一) | Raymon&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Raymon</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:237785342@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/raymon77" title="GitHub"></a>
+                            
+                                <a class="fa V2EX" href="https://www.v2ex.com/member/raymon77" title="V2EX"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" href="/237785342" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/img/weixin.jpg" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anguluar/">Anguluar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂记/">杂记</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="/www.xyue.ltd">xyue</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">网瘾晚期。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Raymon</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Raymon</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:237785342@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/raymon77" title="GitHub"></a>
+                            
+                                <a class="fa V2EX" target="_blank" href="https://www.v2ex.com/member/raymon77" title="V2EX"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/237785342" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/img/weixin.jpg" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-05.关于Angular的十问十答-一" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/16/05.关于Angular的十问十答-一/" class="article-date">
+      <time datetime="2017-06-16T11:10:41.000Z" itemprop="datePublished">2017-06-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于Angular的十问十答(一)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Anguluar/">Anguluar</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>关于Angular的十问十答系列，意在梳理Angular框架相关的知识架构，希望能对这部分知识形成一个完整的回路有所帮助。至于本系列具体会写几篇，我也还不确定，毕竟是从头开始梳理，但是难度系数肯定是逐渐增强的。第一篇呢，是入门级，不过更新仍然不一定按照顺序来，想到哪了，就写到哪儿，就这么任性。</p>
+<h3 id="1-什么是MVC-使用MVC的优点是什么？"><a href="#1-什么是MVC-使用MVC的优点是什么？" class="headerlink" title="1.什么是MVC? 使用MVC的优点是什么？"></a>1.什么是MVC? 使用MVC的优点是什么？</h3><a id="more"></a>
+<blockquote>
+<p>1.1 MVC是一种软件架构设计的思想，将软件按照模型、视图、控制器来划分。模型负责封装业务逻辑和数据；视图负责输入和输出，控制显示界面交互；控制器负责协调模型和视图。</p>
+<ul>
+<li>Model(模型)：模型是应用程序的主体部分，通常用于处理应用程序的业务数据，或者业务逻辑部分. </li>
+<li>View(视图)：视图是应用程序中处理用户界面显示的部分，通常视图是依据模型数据创建的.</li>
+<li>controller(控制器)：应用程序中处理用户交互的部分，通常控制器负责从视图读取数据，控制用户输入，并向模型发送数据。</li>
+<li>1.2 MVC的优点：<ul>
+<li>实现了功能模块和显示模块的分离</li>
+<li>可维护性</li>
+<li>可扩展性</li>
+<li>可移植性和组件的可复用性 <h3 id="2-什么是指令？"><a href="#2-什么是指令？" class="headerlink" title="2.什么是指令？"></a>2.什么是指令？</h3>HTML在构建应用（App）时存在诸多不足之处，AngularJS通过扩展一系列的HTML属性或标签来弥补这些缺陷，所谓指令就是AngularJS自定义的HTML属性或标签，这些指令都是以ng-做为前缀的，例如ng-app、ng-controller、ng-repeat等。<h3 id="3-列举出一些常见的ng当中内置指令？它们的作用分别是什么？"><a href="#3-列举出一些常见的ng当中内置指令？它们的作用分别是什么？" class="headerlink" title="3.列举出一些常见的ng当中内置指令？它们的作用分别是什么？"></a>3.列举出一些常见的ng当中内置指令？它们的作用分别是什么？</h3></li>
+</ul>
+</li>
+<li>ng-app 指定应用根元素，至少有一个元素指定了此属性。</li>
+<li>ng-controller:指定控制器对象</li>
+<li>ng-show:控制元素是否显示，true显示、false不显示</li>
+<li>ng-hide:控制元素是否隐藏，true隐藏、false不隐藏</li>
+<li>ng-if:控制元素是否“存在”，true存在、false不存在</li>
+<li>ng-src:指定 <code>&lt;img&gt;</code> 元素的 src 属性,增强图片路径</li>
+<li>ng-href:为 <code>&lt;a&gt;</code> 元素指定链接,增强地址</li>
+<li>ng-class:指定HTML元素使用的 CSS 类，控制类名</li>
+<li>ng-include:在应用中包含HTML文件，引入模板</li>
+<li>ng-disabled:规定一个元素是否被禁用，表单禁用</li>
+<li>ng-readonly:指定元素的readonly属性，表单只读</li>
+<li>ng-checked:规定单/复选框表单是否被选中</li>
+<li>ng-selected:规定下拉框表单是否被选中<h3 id="4-什么是数据的双向绑定？什么时候使用双向绑定？"><a href="#4-什么是数据的双向绑定？什么时候使用双向绑定？" class="headerlink" title="4.什么是数据的双向绑定？什么时候使用双向绑定？"></a>4.什么是数据的双向绑定？什么时候使用双向绑定？</h3></li>
+<li>数据双向绑定:视图的数据可以绑定到模型当中,模型的数据可以绑定到视图当中，不仅能读取数据，也能更新数据.</li>
+<li>使用场景：表单编辑/交互等.<h3 id="5-如何给一个标签添加事件？"><a href="#5-如何给一个标签添加事件？" class="headerlink" title="5.如何给一个标签添加事件？"></a>5.如何给一个标签添加事件？</h3>使用方法为:<br><code>ng-事件名称 = “事件名称( 参数)&quot;</code><br>参数可以自己指定, 也可以传入事件对象<code>$event</code><br>使用$scope来去实现事件定义的方法:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$scope.事件名称 = function(参数)&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="6-如何自定义指令？"><a href="#6-如何自定义指令？" class="headerlink" title="6.如何自定义指令？"></a>6.如何自定义指令？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 第一个参数：指令名称</div><div class="line">// 第二个参数：回调函数</div><div class="line">app.directive(‘nav’,function()&#123;</div><div class="line">  return&#123;</div><div class="line">    Restrict:’EA’,    // E:element元素，A:attribute:属性，C:当做类,M:以注释形式出现</div><div class="line">    templateURL:’./nav.html’,</div><div class="line">    Replace:true      // 是否替换原标签</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="7-列出directive当中restrict的几种形式，分别什么意思？"><a href="#7-列出directive当中restrict的几种形式，分别什么意思？" class="headerlink" title="7.列出directive当中restrict的几种形式，分别什么意思？"></a>7.列出directive当中restrict的几种形式，分别什么意思？</h3><ul>
+<li>自定义指令可以以4中形式展示到HTML中：简称‘ECMA’</li>
+<li>E:element：以元素/标签的形式使用</li>
+<li>C:以标签的类名形式使用</li>
+<li>M:以注释形式出现和使用</li>
+<li>A:attribute:以属性的形式使用<h3 id="8-指令当中transclude代表什么意思？"><a href="#8-指令当中transclude代表什么意思？" class="headerlink" title="8.指令当中transclude代表什么意思？"></a>8.指令当中transclude代表什么意思？</h3>规定填充的目标位置<h3 id="9-什么是过滤器？列举你所知道的内置过滤器？"><a href="#9-什么是过滤器？列举你所知道的内置过滤器？" class="headerlink" title="9.什么是过滤器？列举你所知道的内置过滤器？"></a>9.什么是过滤器？列举你所知道的内置过滤器？</h3>过滤器可以用来转换数据，格式化数据。过滤器可以使用一个管道字符（|）添加到表达式和指令中。<br>angular内置了9个过滤器：</li>
+<li>1.Currency：将数据格式化为货币格式</li>
+<li>2.Date:日期格式化，年（y）、月（M）、日（d）、星期（EEEE/EEE）、时（H/h）、分（m）、秒（s）、毫秒（.sss），也可以组合到一起使用。</li>
+<li>3.Filter：从数组项中选择一个子集。</li>
+<li>4.Json:将Javascrip对象转成JSON字符串。</li>
+<li>5.limitTo:取出字符串或数组的前（正数）几位或后（负数）几位</li>
+<li>6.Lowercase：格式化字符串为小写。</li>
+<li>7.Uppercase：格式化字符串为大写。</li>
+<li>8.Number：数字格式化，可控制小数位数</li>
+<li>9.orderBy：根据某个表达式排列数组。<h3 id="10-过滤器的本质是什么？如何自定义过滤器？"><a href="#10-过滤器的本质是什么？如何自定义过滤器？" class="headerlink" title="10.过滤器的本质是什么？如何自定义过滤器？"></a>10.过滤器的本质是什么？如何自定义过滤器？</h3>其本质就是一个函数，方法。<br>自定义过滤器：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">     &lt;script src=&quot;angular.js&quot;&gt;&lt;/script&gt;</div><div class="line">      &lt;script&gt;</div><div class="line">             var app = angular.module(&apos;app&apos;,[]);</div><div class="line">             app.controller(&apos;perController&apos;,[&apos;$scope&apos;,function ($scope) &#123;</div><div class="line">                 $scope.price = 20;</div><div class="line">                 $scope.str = &quot;xmg&quot;;</div><div class="line">             &#125;]);</div><div class="line"></div><div class="line">             /*自定义过滤器</div><div class="line">             * 本质：是一个方法</div><div class="line">             * input 是自己默认传入的参数：它是管道符左侧的内容传递进来。</div><div class="line">             * */</div><div class="line">             app.filter(&apos;money&apos;,function () &#123;</div><div class="line">                 return function (input) &#123;</div><div class="line">                     return &quot;￥&quot;+input+&quot;元&quot;;</div><div class="line">                 &#125;</div><div class="line">             &#125;);</div><div class="line"></div><div class="line">             app.filter(&apos;xmgCurrency&apos;,function () &#123;</div><div class="line">                return function (input,args) &#123;</div><div class="line">                    console.log(args);</div><div class="line">                    if (args == undefined)&#123;</div><div class="line">                        return &quot;$&quot;+input;</div><div class="line">                    &#125;else &#123;</div><div class="line">                        return args + input;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">             &#125;);</div><div class="line"></div><div class="line">             /*把首字母变成大写*/</div><div class="line">             app.filter(&apos;firUppcase&apos;,function () &#123;</div><div class="line">                return function (input) &#123;</div><div class="line">                  return  input[0].toUpperCase() + input.slice(1);</div><div class="line">                &#125; </div><div class="line">             &#125;);</div><div class="line"></div><div class="line">     &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"></div><div class="line">&lt;body ng-app=&quot;app&quot; ng-controller=&quot;perController&quot;&gt;</div><div class="line"></div><div class="line">&lt;p&gt;&#123;&#123;price | money &#125;&#125;&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;p&gt;&#123;&#123;price | xmgCurrency:&apos;&amp;&amp;&apos; &#125;&#125;&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;p&gt;&#123;&#123;str | firUppcase &#125;&#125;&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/16/05.关于Angular的十问十答-一/">关于Angular的十问十答(一)</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Raymon</a></p>
+        <p><span>发布时间:</span>2017-06-16, 19:10:41</p>
+        <p><span>最后更新:</span>2017-06-16, 20:18:32</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/16/05.关于Angular的十问十答-一/" title="关于Angular的十问十答(一)">http://celinez.cn/2017/06/16/05.关于Angular的十问十答-一/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://celinez.cn/2017/06/16/05.关于Angular的十问十答-一/　　作者: Raymon" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/16/04.Anguluar的基本使用/">
+                    Anguluar的基本基本概念(一)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么是MVC-使用MVC的优点是什么？"><span class="toc-number">1.</span> <span class="toc-text">1.什么是MVC? 使用MVC的优点是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-什么是指令？"><span class="toc-number">2.</span> <span class="toc-text">2.什么是指令？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-列举出一些常见的ng当中内置指令？它们的作用分别是什么？"><span class="toc-number">3.</span> <span class="toc-text">3.列举出一些常见的ng当中内置指令？它们的作用分别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-什么是数据的双向绑定？什么时候使用双向绑定？"><span class="toc-number">4.</span> <span class="toc-text">4.什么是数据的双向绑定？什么时候使用双向绑定？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-如何给一个标签添加事件？"><span class="toc-number">5.</span> <span class="toc-text">5.如何给一个标签添加事件？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-如何自定义指令？"><span class="toc-number">6.</span> <span class="toc-text">6.如何自定义指令？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-列出directive当中restrict的几种形式，分别什么意思？"><span class="toc-number">7.</span> <span class="toc-text">7.列出directive当中restrict的几种形式，分别什么意思？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-指令当中transclude代表什么意思？"><span class="toc-number">8.</span> <span class="toc-text">8.指令当中transclude代表什么意思？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-什么是过滤器？列举你所知道的内置过滤器？"><span class="toc-number">9.</span> <span class="toc-text">9.什么是过滤器？列举你所知道的内置过滤器？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-过滤器的本质是什么？如何自定义过滤器？"><span class="toc-number">10.</span> <span class="toc-text">10.过滤器的本质是什么？如何自定义过滤器？</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"关于Angular的十问十答(一)　| Raymon's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2136101';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/16/04.Anguluar的基本使用/" title="下一篇: Anguluar的基本基本概念(一)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/05.关于Angular的十问十答-一/">关于Angular的十问十答(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/04.Anguluar的基本使用/">Anguluar的基本基本概念(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/02.浏览器和网页/">01：浏览器和网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/11/03.H5技能树/">H5技能树</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/01.MarkDow-语法扫盲/">MarkDown 语法扫盲</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/Hello-World/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/welcome/">Welcome To Raymon's Blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/hexo/">Hexo</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Raymon
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
