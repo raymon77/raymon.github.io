@@ -15,16 +15,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="description" content="关于angular的十问十答系列(二)，依然是基于 Angular 1.5.8 版本. 1.什么是依赖注入，原理是什么？形式有几种？ 依赖注入：所谓依赖注入是指在运行时自动查找依赖关系，然后将查找到依赖传递给使用者的一种机制，直白点说就是：需要用到什么东西，就往里面添加什么东西，并且将其传入。">
+<meta name="keywords" content="Anguluar">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://celinez.cn/2017/06/09/hexo/index.html">
+<meta property="og:title" content="关于angular的十问十答(二)">
+<meta property="og:url" content="http://celinez.cn/2017/06/19/06-关于angular的十问十答-二/index.html">
 <meta property="og:site_name" content="Raymon&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta property="og:updated_time" content="2017-06-11T08:46:56.869Z">
+<meta property="og:description" content="关于angular的十问十答系列(二)，依然是基于 Angular 1.5.8 版本. 1.什么是依赖注入，原理是什么？形式有几种？ 依赖注入：所谓依赖注入是指在运行时自动查找依赖关系，然后将查找到依赖传递给使用者的一种机制，直白点说就是：需要用到什么东西，就往里面添加什么东西，并且将其传入。">
+<meta property="og:updated_time" content="2017-06-19T16:55:02.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="关于angular的十问十答(二)">
+<meta name="twitter:description" content="关于angular的十问十答系列(二)，依然是基于 Angular 1.5.8 版本. 1.什么是依赖注入，原理是什么？形式有几种？ 依赖注入：所谓依赖注入是指在运行时自动查找依赖关系，然后将查找到依赖传递给使用者的一种机制，直白点说就是：需要用到什么东西，就往里面添加什么东西，并且将其传入。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hexo | Raymon&#39;s Blog</title>
+<title>关于angular的十问十答(二) | Raymon&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -270,11 +271,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-06-关于angular的十问十答-二" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/09/hexo/" class="article-date">
-      <time datetime="2017-06-09T05:27:02.786Z" itemprop="datePublished">2017-06-09</time>
+      <a href="/2017/06/19/06-关于angular的十问十答-二/" class="article-date">
+      <time datetime="2017-06-18T16:29:51.000Z" itemprop="datePublished">2017-06-19</time>
 </a>
 
 
@@ -289,7 +290,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo
+      关于angular的十问十答(二)
     </h1>
   
 
@@ -299,6 +300,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Anguluar/">Anguluar</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -306,17 +311,25 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <p>关于angular的十问十答系列(二)，依然是基于 <strong>Angular 1.5.8</strong> 版本.</p>
+<h3 id="1-什么是依赖注入，原理是什么？形式有几种？"><a href="#1-什么是依赖注入，原理是什么？形式有几种？" class="headerlink" title="1.什么是依赖注入，原理是什么？形式有几种？"></a>1.什么是依赖注入，原理是什么？形式有几种？</h3><ul>
+<li>依赖注入：所谓依赖注入是指在运行时自动查找依赖关系，然后将查找到依赖传递给使用者的一种机制，直白点说就是：需要用到什么东西，就往里面添加什么东西，并且将其传入。<a id="more"></a></li>
+<li>原理：AngularJS采用模块化的方式组织代码，将一些通用逻辑封装成一个对象或函数，实现最大程度的复用，这导致了使用者和被使用者之间存在依赖关系。</li>
+<li>形式有两种：<ul>
+<li>推断式注入：没有明确声明依赖，AngularJS会将函数参数名称当成是依赖的名称，这种方式会带来一个问题，当代码经过压缩后函数的参数被压缩，这样便会造成依赖无法找到(不推荐使用此方法)。</li>
+<li>行内式注入：以数组形式明确声明依赖，数组元素都是包含依赖名称的字符串，数组最后一个元素是依赖注入的目标函数，推荐使用行内式注入.<br>依赖注入示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">var app = angular.module(&apos;app&apos;,[]);</div><div class="line">//自定义控制器</div><div class="line">//1.行内式注入</div><div class="line">app.controller(&apos;controllerName&apos;,</div><div class="line">[&apos;$scope&apos;,&apos;$http&apos;,function ($scope,$http) &#123;</div><div class="line">  $scope.name = &quot;121&quot;;</div><div class="line">  $scope.str = &quot;hello&quot;;</div><div class="line">&#125;]);</div><div class="line">//2.推断式注入</div><div class="line">app.controller(&apos;perController&apos;,function ($scope,$http) &#123;</div><div class="line">  $scope.name = &apos;xmg&apos;;</div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-location是干什么的？"><a href="#2-location是干什么的？" class="headerlink" title="2.$location是干什么的？"></a>2.$location是干什么的？</h3><ul>
+<li>服务就是angular内置的功能，它的本质就是一个对象或函数.</li>
+<li>$location可以用来查看原生的网络地址<h3 id="3-如何取消一个定时器？"><a href="#3-如何取消一个定时器？" class="headerlink" title="3.如何取消一个定时器？"></a>3.如何取消一个定时器？</h3></li>
+<li>$timeout&amp;$interval只是对原生Javascript中的setTimeout和setInterval进行了封装.</li>
+<li>cancel方法可以取消定时器<code>$interval.cancel(timer);</code>.<h3 id="4-手写原生Ajax？"><a href="#4-手写原生Ajax？" class="headerlink" title="4.手写原生Ajax？"></a>4.手写原生Ajax？</h3>手写就算了，编辑器写写还行。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 1.创建请求</div><div class="line">        var xhr = new XMLHttpRequest();</div><div class="line">        // 2.设置请求方式和路径</div><div class="line">        xhr.open(&apos;get&apos;,&apos;test.php&apos;);</div><div class="line">        // 3.发送请求</div><div class="line">        xhr.send();</div><div class="line"></div><div class="line">        // 4.设置响应体的文本信息</div><div class="line">//        在 onreadystatechange 事件中，我们规定当服务器响应已做好被处理的准备时所执行的任务。</div><div class="line">        xhr.onreadystatechange = function () &#123;</div><div class="line">//          readyState == 4 表示请求已完成，且响应已就绪 &amp;&amp; status == 200 表示处理的结果是OK的</div><div class="line">            if (xhr.readyState == 4 &amp;&amp; xhr.status == 200)&#123;</div><div class="line">//                将响应体的文本展示到html页面中</div><div class="line">                document.querySelector(&apos;.box&apos;).innerHTML = xhr.responseText;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-get与post区别？"><a href="#5-get与post区别？" class="headerlink" title="5.get与post区别？"></a>5.get与post区别？</h3>
       
     </div>
     
@@ -324,13 +337,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/06/09/hexo/">Hexo</a></p>
+        <p><span>本文标题:</span><a href="/2017/06/19/06-关于angular的十问十答-二/">关于angular的十问十答(二)</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Raymon</a></p>
-        <p><span>发布时间:</span>2017-06-09, 13:27:02</p>
-        <p><span>最后更新:</span>2017-06-11, 16:46:56</p>
+        <p><span>发布时间:</span>2017-06-19, 00:29:51</p>
+        <p><span>最后更新:</span>2017-06-20, 00:55:02</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/06/09/hexo/" title="Hexo">http://celinez.cn/2017/06/09/hexo/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://celinez.cn/2017/06/09/hexo/　　作者: Raymon" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/19/06-关于angular的十问十答-二/" title="关于angular的十问十答(二)">http://celinez.cn/2017/06/19/06-关于angular的十问十答-二/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://celinez.cn/2017/06/19/06-关于angular的十问十答-二/　　作者: Raymon" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -342,12 +355,12 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/06/09/welcome/">
-                    Welcome To Raymon&#39;s Blog
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/16/05.关于Angular的十问十答-一/">
+                    关于Angular的十问十答(一)
                 </a>
             </div>
-        
         
     </nav>
 
@@ -357,7 +370,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么是依赖注入，原理是什么？形式有几种？"><span class="toc-number">1.</span> <span class="toc-text">1.什么是依赖注入，原理是什么？形式有几种？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-location是干什么的？"><span class="toc-number">2.</span> <span class="toc-text">2.$location是干什么的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-如何取消一个定时器？"><span class="toc-number">3.</span> <span class="toc-text">3.如何取消一个定时器？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-手写原生Ajax？"><span class="toc-number">4.</span> <span class="toc-text">4.手写原生Ajax？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-get与post区别？"><span class="toc-number">5.</span> <span class="toc-text">5.get与post区别？</span></a></li></ol>
         
     </div>
     <style>
@@ -393,7 +406,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hexo　| Raymon's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"关于angular的十问十答(二)　| Raymon's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -427,15 +440,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/06/09/welcome/" title="上一篇: Welcome To Raymon&#39;s Blog">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/06/16/05.关于Angular的十问十答-一/" title="下一篇: 关于Angular的十问十答(一)">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
