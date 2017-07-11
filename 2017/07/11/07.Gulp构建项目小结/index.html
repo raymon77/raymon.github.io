@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Raymon" />
+
+
+
+<meta name="description" content="Gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；它不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用Gulp，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。Gulp 中文官网-入门指南咱们先悄悄地瞄一眼 效果图 吧，这样才有做下去的动力：">
+<meta name="keywords" content="Gulp , Bower">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gulp构建项目小结">
+<meta property="og:url" content="http://celinez.cn/2017/07/11/07.Gulp构建项目小结/index.html">
+<meta property="og:site_name" content="Raymon&#39;s Blog">
+<meta property="og:description" content="Gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；它不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用Gulp，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。Gulp 中文官网-入门指南咱们先悄悄地瞄一眼 效果图 吧，这样才有做下去的动力：">
+<meta property="og:image" content="http://celinez.cn/img/污力图效果.jpg">
+<meta property="og:image" content="http://celinez.cn/img/gulp2.jpg">
+<meta property="og:image" content="http://celinez.cn/img/gulp3.jpg">
+<meta property="og:image" content="http://celinez.cn/img/污力图详情页.jpg">
+<meta property="og:image" content="http://celinez.cn/img/gulp4.png">
+<meta property="og:image" content="http://celinez.cn/img/gulp5.jpg">
+<meta property="og:updated_time" content="2017-07-11T09:39:16.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gulp构建项目小结">
+<meta name="twitter:description" content="Gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；它不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用Gulp，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。Gulp 中文官网-入门指南咱们先悄悄地瞄一眼 效果图 吧，这样才有做下去的动力：">
+<meta name="twitter:image" content="http://celinez.cn/img/污力图效果.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Raymon&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Gulp构建项目小结 | Raymon&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Raymon</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:237785342@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/raymon77" title="GitHub"></a>
+                            
+                                <a class="fa V2EX" href="https://www.v2ex.com/member/raymon77" title="V2EX"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" href="/237785342" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/img/weixin.jpg" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anguluar/">Anguluar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp-Bower/">Gulp , Bower</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂记/">杂记</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="/www.xyue.ltd">xyue</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">网瘾晚期。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Raymon</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Raymon</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:237785342@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/raymon77" title="GitHub"></a>
+                            
+                                <a class="fa V2EX" target="_blank" href="https://www.v2ex.com/member/raymon77" title="V2EX"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/237785342" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/img/weixin.jpg" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-07.Gulp构建项目小结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/07/11/07.Gulp构建项目小结/" class="article-date">
+      <time datetime="2017-07-11T07:13:47.000Z" itemprop="datePublished">2017-07-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Gulp构建项目小结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gulp-Bower/">Gulp , Bower</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>Gulp</strong>是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；<br>它不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；<br>使用<strong>Gulp</strong>，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。<br><a href="http://www.gulpjs.com.cn/docs/getting-started/" target="_blank" rel="external">Gulp 中文官网-入门指南</a><br>咱们先悄悄地瞄一眼 <em>效果图</em> 吧，这样才有做下去的动力：<br><a id="more"></a><br><img src="/img/污力图效果.jpg" alt="效果图"></p>
+<h3 id="1-要想使用Gulp构建项目，得先搭建Gulp开发环境："><a href="#1-要想使用Gulp构建项目，得先搭建Gulp开发环境：" class="headerlink" title="1.要想使用Gulp构建项目，得先搭建Gulp开发环境："></a>1.要想使用Gulp构建项目，得先搭建Gulp开发环境：</h3><blockquote>
+<p>Gulp的工作原理/本质：Gulp是管理/指挥其他插件做任务的运行器，它自己是管理者的角色。这样做的目的是为了方便扩展。和我们小时候玩过的小霸王游戏机很像，Gulp就是小霸王游戏机，插上不同的游戏卡(插件)就能玩不同的游戏，做不同的事情。</p>
+</blockquote>
+<p>使用软件:<code>WampServer</code>,<code>WebStorm</code><br>1.全局安装 gulp：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install --global gulp </div><div class="line">或者使用淘宝镜像安装：</div><div class="line">$ npm install -g gulp --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
+<p>2.切换到本地项目根目录下创建一个名字为<code>gulpfile.js</code>的文件。<br>名称是固定的，必须为<code>gulpfile.js</code> 。<br><code>$ npm install gulp --registry=https://registry.npm.taobao.org</code><br>安装完会生成一个<code>node_modules</code>文件夹 ，此文件夹中都是项目依赖。<br>3.Gulp 配置文件 <code>gulpfile.js</code> 示例内容如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line">var app = &#123;  // 定义目录</div><div class="line">    srcPath:&apos;src/&apos;,</div><div class="line">    buildPath:&apos;build/&apos;,</div><div class="line">    distPath:&apos;dist/&apos;</div><div class="line">&#125;</div><div class="line">/*1.引入gulp与gulp插件,使用时要去下载这些插件*/</div><div class="line">var gulp = require(&apos;gulp&apos;);</div><div class="line">var less = require(&apos;gulp-less&apos;);</div><div class="line">var cssmin = require(&apos;gulp-cssmin&apos;);</div><div class="line">var uglify = require(&apos;gulp-uglify&apos;);</div><div class="line">var concat = require(&apos;gulp-concat&apos;);</div><div class="line">var connect = require(&apos;gulp-connect&apos;);</div><div class="line">var imagemin = require(&apos;gulp-imagemin&apos;);</div><div class="line">var open = require(&apos;open&apos;);</div><div class="line">/*把bower下载的前端框架放到我们项目当中*/</div><div class="line">gulp.task(&apos;lib&apos;,function () &#123;</div><div class="line">    gulp.src(&apos;bower_components/**/*.js&apos;)</div><div class="line">        .pipe(gulp.dest(app.buildPath+&apos;lib&apos;))</div><div class="line">        .pipe(gulp.dest(app.distPath+&apos;lib&apos;))</div><div class="line">        .pipe(connect.reload()) //当内容发生改变时， 重新加载。</div><div class="line">&#125;);</div><div class="line">/*2.定义任务 把所有html文件移动另一个位置*/</div><div class="line">gulp.task(&apos;html&apos;,function () &#123;</div><div class="line">    /*要操作哪些文件 确定源文件地址*/</div><div class="line">    gulp.src(app.srcPath+&apos;**/*.html&apos;)  /*src下所有目录下的所有.html文件*/</div><div class="line">        .pipe(gulp.dest(app.buildPath)) //gulp.dest 要把文件放到指定的目标位置</div><div class="line">        .pipe(gulp.dest(app.distPath))</div><div class="line">        .pipe(connect.reload()) //当内容发生改变时，重新加载。</div><div class="line">&#125;);</div><div class="line">/*3.执行任务 通过命令行。gulp 任务名称*/</div><div class="line">/*定义编译less任务  下载对应的插件 gulp-less</div><div class="line"> * 把less文件转成css放到build</div><div class="line"> * */</div><div class="line">gulp.task(&apos;less&apos;,function () &#123;</div><div class="line">    gulp.src(app.srcPath+&apos;style/index.less&apos;)</div><div class="line">        .pipe(less())</div><div class="line">        .pipe(gulp.dest(app.buildPath+&apos;css/&apos;))</div><div class="line">        /*经过压缩，放到dist目录当中*/</div><div class="line">        .pipe(cssmin())</div><div class="line">        .pipe(gulp.dest(app.distPath+&apos;css/&apos;))</div><div class="line">        .pipe(connect.reload())</div><div class="line">&#125;);</div><div class="line">/*合并js*/</div><div class="line">gulp.task(&apos;js&apos;,function () &#123;</div><div class="line">    gulp.src(app.srcPath+&apos;js/**/*.js&apos;)</div><div class="line">        .pipe(concat(&apos;index.js&apos;))</div><div class="line">        .pipe(gulp.dest(app.buildPath+&apos;js/&apos;))</div><div class="line">        .pipe(uglify())</div><div class="line">        .pipe(gulp.dest(app.distPath+&apos;js&apos;))</div><div class="line">        .pipe(connect.reload())</div><div class="line">&#125;);</div><div class="line">/*压缩图片*/</div><div class="line">gulp.task(&apos;image&apos;,function () &#123;</div><div class="line">    gulp.src(app.srcPath+&apos;images/**/*&apos;)</div><div class="line">        .pipe(gulp.dest(app.buildPath+&apos;images&apos;))</div><div class="line">        .pipe(imagemin())</div><div class="line">        .pipe(gulp.dest(app.distPath+&apos;images&apos;))</div><div class="line">        .pipe(connect.reload())</div><div class="line">&#125;);</div><div class="line">/*同时执行多个任务 [其它任务的名称]</div><div class="line"> * 当前bulid时，会自动把数组当中的所有任务给执行了。</div><div class="line"> * */</div><div class="line">gulp.task(&apos;build&apos;,[&apos;less&apos;,&apos;html&apos;,&apos;js&apos;,&apos;image&apos;,&apos;lib&apos;]);</div><div class="line">/*定义server任务</div><div class="line"> * 搭建一个服务器。设置运行的构建目录</div><div class="line"> * */</div><div class="line">gulp.task(&apos;server&apos;,[&apos;build&apos;],function () &#123;</div><div class="line">    /*设置服务器*/</div><div class="line">    connect.server(&#123;</div><div class="line">        root:[app.buildPath],//要运行哪个目录</div><div class="line">        livereload:true,  //是否热更新。</div><div class="line">        port:9999  //端口号</div><div class="line">    &#125;)</div><div class="line">    /*监听哪些任务*/</div><div class="line">    gulp.watch(&apos;bower_components/**/*&apos;,[&apos;lib&apos;]);</div><div class="line">    gulp.watch(app.srcPath+&apos;**/*.html&apos;,[&apos;html&apos;]);</div><div class="line">    gulp.watch(app.srcPath+&apos;js/**/*.js&apos;,[&apos;js&apos;]);</div><div class="line">    gulp.watch(app.srcPath+&apos;images/**/*&apos;,[&apos;image&apos;]);</div><div class="line">    gulp.watch(app.srcPath+&apos;style/**/*.less&apos;,[&apos;less&apos;]);</div><div class="line">    //通过浏览器把指定的地址 （http://localhost:9999）打开。</div><div class="line">    open(&apos;http://localhost:9999&apos;);</div><div class="line">&#125;);</div><div class="line">/*定义默认任务</div><div class="line"> * 直接执行 gulp 会调用的任务</div><div class="line"> * */</div><div class="line">gulp.task(&apos;default&apos;,[&apos;server&apos;]);</div></pre></td></tr></table></figure></p>
+<p>执行指令,安装依赖插件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp gulp-less gulp-cssmin gulp-uglify gulp-concat gulp-connect gulp-imagemin open</div></pre></td></tr></table></figure></p>
+<p>到此，环境算是配置完毕了，接下来需要搭建整体框架。</p>
+<h3 id="2-整体框架搭建："><a href="#2-整体框架搭建：" class="headerlink" title="2.整体框架搭建："></a>2.整体框架搭建：</h3><ul>
+<li><em>新建文件/文件夹</em>:<br>新建一个<strong>webApp</strong>文件夹, 在此文件夹下新建<strong>src</strong>文件夹<br>在<strong>src</strong>文件夹内,新建:<strong>images js style views</strong>四个文件夹和<code>index.html</code>文件<br>示例目录如下:<br><img src="/img/gulp2.jpg" alt="目录结构"><br><strong>测试Gulp环境,是否搭建成功</strong>:<br>打开<strong>WampServer</strong>软件,搭建服务器环境,<br>cd进入webApp文件夹,<br>然后键入指令<strong>gulp</strong> 就会自动在浏览器中打开<code>index.html</code>网页,<br>在index.html里面修改内容,浏览器中会自动刷新.即为Gulp环境搭建成功.</li>
+</ul>
+<p>使用<strong>bower</strong>包管理工具,在<strong>webApp</strong>文件夹内,下载<strong>angular</strong> <strong>angular-ui-router</strong>这两个框架<br>(gulp配合bower使用,会自动引入bower下载好的框架) 下载好后如下图:<br><img src="/img/gulp3.jpg" alt="目录结构"><br>如下所示,<code>index.html</code>中引入<strong>angular</strong> <strong>angular-ui-router</strong>框架:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;lib/angular/angular.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;lib/angular-ui-router/release/angular-ui-router.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>如下所示<code>index.html</code>中, 搭建整体框架:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!--导航--&gt;</div><div class="line">&lt;navs&gt;&lt;/navs&gt;</div><div class="line">&lt;!--中部列表--&gt;</div><div class="line">&lt;div ng-show=&quot;type == &apos;home&apos;&quot; ui-view=&quot;home&quot;&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div ng-show=&quot;type == &apos;author&apos;&quot; ui-view=&quot;author&quot;&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div ng-show=&quot;type == &apos;content&apos;&quot; ui-view=&quot;content&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div ng-show=&quot;type == &apos;my&apos;&quot; ui-view=&quot;my&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;!--标签切换--&gt;</div><div class="line">&lt;tabbar&gt;&lt;/tabbar&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="3-自定义指令封装-Nav-Tabbar-组件"><a href="#3-自定义指令封装-Nav-Tabbar-组件" class="headerlink" title="3.自定义指令封装 Nav,Tabbar 组件"></a>3.自定义指令封装 <strong>Nav</strong>,<strong>Tabbar</strong> 组件</h3><p>自定义指令<strong>nav</strong>组件 <code>NavDir.js</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">angular.module(&apos;app&apos;).directive(&apos;navs&apos;,function () &#123;</div><div class="line">    return &#123;</div><div class="line">        restrict: &apos;EA&apos;,</div><div class="line">        templateUrl: &apos;../views/nav_tpl.html&apos;,</div><div class="line">        link: function ($scope,ele,attr) &#123;</div><div class="line">            // 监听底部导航切换的广播</div><div class="line">            $scope.$on(&apos;titleChange&apos;,function (e, args) &#123;</div><div class="line">                var title = args.title;</div><div class="line">                ele.find(&apos;span&apos;).html(title);</div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p><strong>nav</strong>模板<code>nav_tpl.html</code> :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;nav&quot;&gt;</div><div class="line">    &lt;em ng-click=&quot;back()&quot; ng-hide=isHome&gt;&lt;&lt;/em&gt;</div><div class="line">    &lt;span&gt;首页&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>自定义指令 <strong>tabbar</strong> 组件 <code>TabbarDir.js</code> :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">angular.module(&apos;app&apos;).directive(&apos;tabbar&apos;,function () &#123;</div><div class="line">    return &#123;</div><div class="line">        restrict: &apos;EA&apos;,</div><div class="line">        templateUrl: &apos;../views/tabbar_tpl.html&apos;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p><strong>tabbar</strong>模板 <code>tabbar_tpl.html</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;tabbar&quot;&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li ng-class=&quot;&#123;active:type == &apos;home&apos;&#125;&quot; ng-click=&quot;tabchange(&apos;home&apos;)&quot;&gt;</div><div class="line">            &lt;p&gt;</div><div class="line">                &lt;img ng-src=&quot;images/&#123;&#123;type==&apos;home&apos; ? &apos;homeSel.png&apos; : &apos;home_icon.png&apos; &#125;&#125;&quot; alt=&quot;&quot;&gt;</div><div class="line">            &lt;/p&gt;</div><div class="line">            首页</div><div class="line">        &lt;/li&gt;</div><div class="line">        &lt;li ng-class=&quot;&#123;active:type == &apos;author&apos;&#125;&quot; ng-click=&quot;tabchange(&apos;author&apos;)&quot;&gt;</div><div class="line">            &lt;p&gt;</div><div class="line">                &lt;img ng-src=&quot;images/&#123;&#123;type==&apos;author&apos; ? &apos;authorSel.png&apos; : &apos;author_icon.png&apos; &#125;&#125;&quot; alt=&quot;&quot;&gt;</div><div class="line">            &lt;/p&gt;</div><div class="line">            作者</div><div class="line">        &lt;/li&gt;</div><div class="line">        &lt;li ng-class=&quot;&#123;active:type == &apos;content&apos;&#125;&quot; ng-click=&quot;tabchange(&apos;content&apos;)&quot;&gt;</div><div class="line">            &lt;p&gt;</div><div class="line">                &lt;img ng-src=&quot;images/&#123;&#123;type==&apos;content&apos; ? &apos;contentSel.png&apos; : &apos;content_icon.png&apos; &#125;&#125;&quot; alt=&quot;&quot;&gt;</div><div class="line">            &lt;/p&gt;</div><div class="line">            栏目</div><div class="line">        &lt;/li&gt;</div><div class="line">        &lt;li ng-class=&quot;&#123;active:type == &apos;my&apos;&#125;&quot; ng-click=&quot;tabchange(&apos;my&apos;)&quot;&gt;</div><div class="line">            &lt;p&gt;</div><div class="line">                &lt;img ng-src=&quot;images/&#123;&#123;type==&apos;my&apos; ? &apos;mySel.png&apos; : &apos;my_icon.png&apos; &#125;&#125;&quot; alt=&quot;&quot;&gt;</div><div class="line">            &lt;/p&gt;</div><div class="line">            我的</div><div class="line">        &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="4-首页静态界面搭建"><a href="#4-首页静态界面搭建" class="headerlink" title="4.首页静态界面搭建"></a>4.首页静态界面搭建</h3><p>使用 <strong>ui.router</strong> 多视图进行了首页搭建 <code>index.js</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">;(function (angular) &#123;</div><div class="line">    var app = angular.module(&apos;app&apos;,[&apos;ui.router&apos;]);</div><div class="line">    app.controller(&apos;AppController&apos;,[&apos;$scope&apos;,&apos;$window&apos;,function ($scope,$window) &#123;</div><div class="line">        $scope.type = &apos;home&apos;;</div><div class="line">        $scope.isHome = true ;</div><div class="line">        $scope.tabchange = function (type) &#123;</div><div class="line">            $scope.type = type;</div><div class="line">            switch ($scope.type)&#123;</div><div class="line">                case &apos;home&apos;:</div><div class="line">                    title = &quot;首页&quot;;</div><div class="line">                    break;</div><div class="line">                case &apos;author&apos;:</div><div class="line">                    title = &quot;作者&quot;;</div><div class="line">                    break;</div><div class="line">                case &apos;content&apos;:</div><div class="line">                    title = &quot;栏目&quot;;</div><div class="line">                    break;</div><div class="line">                case &apos;my&apos;:</div><div class="line">                    title = &quot;我的&quot;;</div><div class="line">                    break;</div><div class="line">            &#125;</div><div class="line">            // 发送一个广播给导航,改标题</div><div class="line">            $scope.$broadcast(&apos;titleChange&apos;,&#123;title:title&#125;);</div><div class="line">        &#125;;</div><div class="line">        // 接受广播&apos;abc&apos;</div><div class="line">        $scope.$on(&apos;abc&apos;,function () &#123;</div><div class="line">            $scope.isHome = false ;</div><div class="line">        &#125;)</div><div class="line">        $scope.back = function () &#123;</div><div class="line">            $scope.isHome = true ;</div><div class="line">            $window.history.back();</div><div class="line">        &#125;;</div><div class="line">    &#125;]);</div><div class="line">&#125;)(angular);</div></pre></td></tr></table></figure></p>
+<h3 id="5-对angular原生的-http进行封装"><a href="#5-对angular原生的-http进行封装" class="headerlink" title="5.对angular原生的$http进行封装"></a>5.对angular原生的$http进行封装</h3><p><code>httpService.js</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">;(function (angular) &#123;</div><div class="line">    &quot;use strict&quot;;</div><div class="line">    angular.module(&apos;app&apos;).service(&apos;xmgHttp&apos;,[&apos;$http&apos;,function ($http) &#123;</div><div class="line">        this.getData = function (success, error) &#123;</div><div class="line">            $http(&#123;</div><div class="line">                url: &apos;http://localhost/home.php&apos;,</div><div class="line">                method: &apos;jsonp&apos;</div><div class="line">            &#125;).then(function (res) &#123;</div><div class="line">                success(res.data.posts);</div><div class="line">            &#125;).catch(function (err) &#123;</div><div class="line">                error(err);</div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;])</div><div class="line">&#125;)(angular);</div></pre></td></tr></table></figure></p>
+<p><code>home.php</code> :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">header(&quot;Content-Type: text/html; charset=UTF-8&quot;);</div><div class="line">$url = &quot;https://moment.douban.com/api/stream/date/2017-03-10?alt=json&amp;apikey=0bcf52793711959c236df76ba534c0d4&amp;app_version=1.7.4&amp;douban_udid=d623045db9fcb0d5243174c1bf1a675f887047c0&amp;format=full&amp;udid=9a34d8b038ff38971050199b0c5ee9c60c6d1ca3&amp;version=6&quot;;</div><div class="line">$res = file_get_contents($url);</div><div class="line">$fun = $_GET[&apos;callback&apos;];</div><div class="line">echo $fun.&apos;(&apos;.$res.&apos;)&apos;;</div></pre></td></tr></table></figure></p>
+<h3 id="6-首页网络数据的获取以及展示"><a href="#6-首页网络数据的获取以及展示" class="headerlink" title="6.首页网络数据的获取以及展示"></a>6.首页网络数据的获取以及展示</h3><p><code>HomeController.js</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">angular.module(&apos;app&apos;).controller(&apos;HomeController&apos;,[&apos;$scope&apos;,&apos;xmgHttp&apos;,function ($scope, xmgHttp) &#123;</div><div class="line">    xmgHttp.getData(function (res) &#123;</div><div class="line">        $scope.listData = res ;</div><div class="line">    &#125;,function (error) &#123;</div><div class="line">        console.log(&apos;请求失败...&apos;);</div><div class="line">    &#125;)</div><div class="line">&#125;])</div></pre></td></tr></table></figure></p>
+<p><em>使用路由的嵌套实现传参以及详情页的跳转</em>:<br><code>routerConfig.js</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">angular.module(&apos;app&apos;).config([&apos;$stateProvider&apos;,&apos;$urlRouterProvider&apos;,function ($stateProvider, $urlRouterProvider) &#123;</div><div class="line">    $stateProvider.state(&apos;app&apos;,&#123;</div><div class="line">        url:&apos;/app&apos;,</div><div class="line">        views: &#123;</div><div class="line">            home:&#123;</div><div class="line">                templateUrl: &apos;../views/home_tpl.html&apos;,</div><div class="line">                controller: &apos;HomeController&apos;</div><div class="line">            &#125;,</div><div class="line">            author:&#123;</div><div class="line">                template: &apos;&lt;h1&gt; author...&lt;/h1&gt;&apos;,</div><div class="line">            &#125;,</div><div class="line">            content:&#123;</div><div class="line">                template: &apos;&lt;h1&gt; content...&lt;/h1&gt;&apos;,</div><div class="line">            &#125;,</div><div class="line">            my:&#123;</div><div class="line">                template: &apos;&lt;h1&gt; my...&lt;/h1&gt;&apos;,</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    $urlRouterProvider.otherwise(&apos;app/index&apos;);</div><div class="line">&#125;]);</div><div class="line">angular.module(&apos;app&apos;).config([&apos;$stateProvider&apos;,function ($stateProvider) &#123;</div><div class="line">    // 配置主路由</div><div class="line">    $stateProvider.state(&apos;app.index&apos;,&#123;</div><div class="line">        url: &apos;/index&apos;,</div><div class="line">        template: &apos;&lt;list&gt;&lt;/list&gt;&apos;</div><div class="line">    &#125;)</div><div class="line">&#125;]);</div><div class="line">angular.module(&apos;app&apos;).config([&apos;$stateProvider&apos;,function ($stateProvider) &#123;</div><div class="line">    $stateProvider.state(&apos;app.detail&apos;,&#123;</div><div class="line">        url: &apos;/detail/:id&apos;,</div><div class="line">        controller: &apos;DetailController&apos;,</div><div class="line">        // template: &apos;&lt;detail&gt;content&lt;/detail&gt;&apos;,</div><div class="line">        template: &apos;&lt;detail content123=&quot;&#123;&#123;content&#125;&#125;&quot;&gt;&lt;/detail&gt;&apos;,</div><div class="line">        // 网络获取的内容 先绑定在属性上,再从属性中 读取.</div><div class="line">    &#125;);</div><div class="line">&#125;]);</div></pre></td></tr></table></figure></p>
+<h3 id="7-详情页静态界面搭建以及数据的获取及展示"><a href="#7-详情页静态界面搭建以及数据的获取及展示" class="headerlink" title="7.详情页静态界面搭建以及数据的获取及展示"></a>7.详情页静态界面搭建以及数据的获取及展示</h3><p><strong>list</strong>自定义指令 <code>listDir.js</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">angular.module(&apos;app&apos;).directive(&apos;list&apos;,function () &#123;</div><div class="line">    return &#123;</div><div class="line">        restrict: &apos;EA&apos;,</div><div class="line">        templateUrl: &apos;../views/list_tpl.html&apos;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p><strong>list</strong>模板 <code>list_tpl.html</code> :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;content&quot;&gt;</div><div class="line">    &lt;div ui-sref=&quot;app.detail(&#123;id:key&#125;)&quot; class=&quot;list_content&quot; ng-repeat=&quot;(key,item) in listData&quot;&gt;</div><div class="line">        &lt;p class=&quot;tag&quot; ng-if=&quot;item.column.name&quot; ng-bind=&quot;item.column.name&quot;&gt;&lt;/p&gt;</div><div class="line">        &lt;h3 ng-bind=&quot;item.title&quot;&gt;&lt;/h3&gt;</div><div class="line">        &lt;div class=&quot;pos1&quot; ng-if=&quot;item.display_style == 10001&quot;&gt;</div><div class="line">            &lt;p ng-bind=&quot;item.abstract&quot;&gt;&lt;/p&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;pos2&quot; ng-if=&quot;item.display_style == 10002&quot;&gt;</div><div class="line">            &lt;p ng-bind=&quot;item.abstract&quot;&gt;&lt;/p&gt;</div><div class="line">            &lt;img ng-src=&quot;images/post_1.png&quot; alt=&quot;&quot;&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;pos3&quot; ng-if=&quot;item.display_style == 10003&quot;&gt;</div><div class="line">            &lt;ul&gt;</div><div class="line">                &lt;li&gt;&lt;img src=&quot;images/post_3.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;img src=&quot;images/post_4.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;img src=&quot;images/post_5.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;</div><div class="line">            &lt;/ul&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p><em>详情页效果如下</em>:<br><img src="/img/污力图详情页.jpg" alt="详情页"></p>
+<h3 id="8-使用gulp构建项目，实现模块化开发，以及css-js代码合并与压缩"><a href="#8-使用gulp构建项目，实现模块化开发，以及css-js代码合并与压缩" class="headerlink" title="8.使用gulp构建项目，实现模块化开发，以及css/js代码合并与压缩"></a>8.使用gulp构建项目，实现模块化开发，以及css/js代码合并与压缩</h3><p><strong>src</strong>完整目录:<br><img src="/img/gulp4.png" alt="src目录"><br>gulp构建项目完整目录:<br><img src="/img/gulp5.jpg" alt="src目录"></p>
+<p>好了，项目到这里就暂时告一段落了，如果后续接着做下去，那就会继续更新，GameOver！</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/07/11/07.Gulp构建项目小结/">Gulp构建项目小结</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Raymon</a></p>
+        <p><span>发布时间:</span>2017-07-11, 15:13:47</p>
+        <p><span>最后更新:</span>2017-07-11, 17:39:16</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/11/07.Gulp构建项目小结/" title="Gulp构建项目小结">http://celinez.cn/2017/07/11/07.Gulp构建项目小结/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://celinez.cn/2017/07/11/07.Gulp构建项目小结/　　作者: Raymon" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/19/06-关于angular的十问十答-二/">
+                    关于angular的十问十答(二)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-要想使用Gulp构建项目，得先搭建Gulp开发环境："><span class="toc-number">1.</span> <span class="toc-text">1.要想使用Gulp构建项目，得先搭建Gulp开发环境：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-整体框架搭建："><span class="toc-number">2.</span> <span class="toc-text">2.整体框架搭建：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-自定义指令封装-Nav-Tabbar-组件"><span class="toc-number">3.</span> <span class="toc-text">3.自定义指令封装 Nav,Tabbar 组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-首页静态界面搭建"><span class="toc-number">4.</span> <span class="toc-text">4.首页静态界面搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-对angular原生的-http进行封装"><span class="toc-number">5.</span> <span class="toc-text">5.对angular原生的$http进行封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-首页网络数据的获取以及展示"><span class="toc-number">6.</span> <span class="toc-text">6.首页网络数据的获取以及展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-详情页静态界面搭建以及数据的获取及展示"><span class="toc-number">7.</span> <span class="toc-text">7.详情页静态界面搭建以及数据的获取及展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-使用gulp构建项目，实现模块化开发，以及css-js代码合并与压缩"><span class="toc-number">8.</span> <span class="toc-text">8.使用gulp构建项目，实现模块化开发，以及css/js代码合并与压缩</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Gulp构建项目小结　| Raymon's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2136101';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/19/06-关于angular的十问十答-二/" title="下一篇: 关于angular的十问十答(二)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/11/07.Gulp构建项目小结/">Gulp构建项目小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/19/06-关于angular的十问十答-二/">关于angular的十问十答(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/05.关于Angular的十问十答-一/">关于Angular的十问十答(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/04.Anguluar的基本使用/">Anguluar的基本基本概念(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/02.浏览器和网页/">01：初识浏览器和网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/11/03.H5技能树/">H5技能树</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/01.MarkDow-语法扫盲/">MarkDown 语法扫盲</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/Hello-World/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/welcome/">Welcome To Raymon's Blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/hexo/">Hexo</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Raymon
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
