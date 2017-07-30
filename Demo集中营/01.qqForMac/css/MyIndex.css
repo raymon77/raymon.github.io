@@ -1,0 +1,681 @@
+/*声明当前文件的编码格式*/
+@charset "UTF-8";
+/*******通用样式******/
+html,
+body,
+section {
+  width: 100%;
+  height: 100%;
+  /*超出内容隐藏*/
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+section {
+  position: relative;
+}
+/****************************** 头部左边 *********************************/
+.head-left {
+  width: 300px;
+  height: 80px;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.head-left img {
+  width: 104px;
+  height: 21px;
+}
+.head-left a {
+  border: 1px solid #fff;
+  padding: 5px 15px;
+  border-radius: 15px;
+}
+/****************************** GPS索引 *********************************/
+.gps {
+  width: 60px;
+  height: 200px;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  margin-top: -100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.gps li {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.gps li.current {
+  background: #fff;
+}
+/******************************** 尾部 *********************************/
+.footer {
+  width: 100%;
+  height: 60px;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer .footer-left {
+  padding-left: 10px;
+  font-weight: bold;
+}
+.footer .footer-right {
+  display: flex;
+  padding-right: 10px;
+}
+.footer .footer-right span {
+  margin: 0 5px;
+}
+/******************************** 指示器 *******************************/
+.pointer {
+  width: 30px;
+  height: 31px;
+  position: fixed;
+  left: 50%;
+  bottom: 25px;
+  margin-left: 15px;
+  animation: upAndDown 0.7s infinite alternate;
+}
+@keyframes upAndDown {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+/**************************** 每一屏的背景 *******************************/
+.p1 {
+  background: url(../images/page1_glow.png) no-repeat center -60px, linear-gradient(0deg, #395ecb 0%, #3657be 35%, #242161 75%, #1a0531 100%);
+}
+.p2 {
+  background: linear-gradient(0deg, #41b93e 0%, #3b9e3c 35%, #274535 75%, #190530 100%);
+}
+.p3 {
+  background: linear-gradient(0deg, #395ecb 0%, #3657be 35%, #242161 75%, #1a0531 100%);
+}
+.p4 {
+  background: url(../images/page4_glow.png) no-repeat center 200px, linear-gradient(0deg, #ff9f42 0%, #ed923d 35%, #6d3816 75%, #2e0b04 100%);
+}
+.p5 {
+  background: url("../images/page5_glow.png") no-repeat center -300px, linear-gradient(0deg, #d74d53 0%, #c44655 35%, #4c184c 75%, #110145 100%);
+}
+/**************************** 每一屏的主题 *******************************/
+/********第一屏********/
+.p1-header {
+  width: 500px;
+  height: 140px;
+  position: absolute;
+  left: 50%;
+  top: 15px;
+  margin-left: -250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.p1-header img {
+  width: 60%;
+}
+.p1-header a {
+  padding: 8px 20px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+}
+.p1-header a:hover {
+  background: #fff;
+  color: #1e1246;
+}
+section.p1 .p1-main,
+section.p1 .p1-main ul {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -300px;
+  margin-top: -300px;
+}
+section.p1 .p1-main li,
+section.p1 .p1-main ul li {
+  width: 580px;
+  height: 361px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -290px;
+  margin-top: -180px;
+  /* 当元素背向时不可见*/
+  backface-visibility: hidden;
+}
+section.p1 {
+  perspective: 1000px;
+}
+section.p1 .p1-main ul {
+  /*添加3d的特效*/
+  transform-style: preserve-3d;
+  animation: p1Round 15s infinite alternate;
+}
+@keyframes p1Round {
+  from {
+    transform: translateX(0px) translateY(10px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+  to {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(360deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+}
+section.p1 .p1-main ul li:nth-child(1) {
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p1 .p1-main ul li:nth-child(2) {
+  transform: translateX(0px) translateY(0px) translateZ(70px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p1 .p1-main ul li:nth-child(3) {
+  transform: translateX(0px) translateY(0px) translateZ(70px) rotateX(180deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p1 .p1-main ul li:nth-child(4) {
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(180deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p1 .p1-main ul li:nth-child(5) {
+  transform: translateX(0px) translateY(0px) translateZ(-70px) rotateX(0deg) rotateY(180deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p1 .p1-round {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -340px;
+  margin-left: -340px;
+  animation: p1Circle 2s infinite linear;
+}
+@keyframes p1Circle {
+  0% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(70deg) rotateY(-10deg) rotateZ(0deg) scaleX(1.5) scaleY(1.5) scaleZ(1.5);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(70deg) rotateY(-10deg) rotateZ(360deg) scaleX(1.5) scaleY(1.5) scaleZ(1.5);
+  }
+}
+/********第二屏********/
+section.p2 {
+  perspective: 1000px;
+}
+section.p2 .p2-bg span {
+  width: 5000px;
+  height: 1px;
+  background: #c7e00e;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -2500px;
+  z-index: -1;
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(-40deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p2 .p2-title {
+  position: absolute;
+  left: 2%;
+  top: 50%;
+  margin-top: -47px;
+  transition: all 1s linear;
+}
+section.p2 .p2-title h5 {
+  color: #fff;
+}
+.p2 .p2-bg > img:nth-of-type(1) {
+  width: 684px;
+  height: 395px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: 20px;
+  margin-top: -197px;
+}
+.p2 .p2-bg > img:nth-of-type(2) {
+  width: 346px;
+  height: 123px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: 150px;
+  margin-top: -62px;
+}
+section.p2 .p2-main {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -300px;
+  margin-top: -300px;
+}
+section.p2 .p2-main ul {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -300px;
+  margin-top: -300px;
+  transition: all 1s linear;
+}
+section.p2 .p2-main ul li {
+  position: absolute;
+  animation: p2Circle 2s infinite linear;
+}
+section.p2 .p2-main ul > li:nth-of-type(1) {
+  left: 55%;
+  top: 20%;
+}
+section.p2 .p2-main ul > li:nth-of-type(2) {
+  left: 35%;
+  top: 20%;
+}
+section.p2 .p2-main ul > li:nth-of-type(3) {
+  left: 20%;
+  top: 20%;
+}
+section.p2 .p2-main ul > li:nth-of-type(4) {
+  left: 0;
+  top: 20%;
+}
+@keyframes p2Circle {
+  0% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+}
+/*实现落空过渡类*/
+.p2.current .p2-main ul,
+.p2.current .p2-title {
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(4) scaleY(4) scaleZ(4);
+}
+/********第三屏********/
+section.p3 {
+  perspective: 1000px;
+}
+section.p3 .p3-bg {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -300px;
+  margin-top: -300px;
+}
+section.p3 .p3-bg img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+section.p3 .p3-bg > img:first-child {
+  margin-left: -684px;
+  margin-top: -525px;
+}
+section.p3 .p3-bg > img:last-child {
+  margin-left: -65px;
+  margin-top: -65px;
+}
+section.p3 .p3-main,
+section.p3 .p3-main ul {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -300px;
+  margin-top: -300px;
+  transform-style: preserve-3d;
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  /*落空类过渡*/
+  transition: all 1s linear;
+}
+section.p3 .p3-main li,
+section.p3 .p3-main ul li {
+  width: 680px;
+  height: 680px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -340px;
+  margin-top: -340px;
+  border: 2px solid #5ec0ff;
+  border-radius: 50%;
+}
+section.p3 .p3-main > li:nth-child(1),
+section.p3 .p3-main ul > li:nth-child(1) {
+  /*围绕y轴进行旋转*/
+  animation: p3Circle1 20s infinite linear;
+}
+section.p3 .p3-main > li:nth-child(1) img,
+section.p3 .p3-main ul > li:nth-child(1) img {
+  animation: p3Round 2s linear infinite;
+}
+section.p3 .p3-main > li:nth-child(2),
+section.p3 .p3-main ul > li:nth-child(2) {
+  animation: p3Circle2 20s infinite linear;
+}
+section.p3 .p3-main > li:nth-child(2) img,
+section.p3 .p3-main ul > li:nth-child(2) img {
+  animation: p3Round 3s linear infinite;
+}
+section.p3 .p3-main > li:nth-child(3),
+section.p3 .p3-main ul > li:nth-child(3) {
+  animation: p3Circle3 20s infinite linear;
+}
+section.p3 .p3-main > li:nth-child(3) img,
+section.p3 .p3-main ul > li:nth-child(3) img {
+  animation: p3Round 4s linear infinite;
+}
+section.p3 .p3-title {
+  position: absolute;
+  left: 60%;
+  top: 35%;
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(10deg) rotateY(-40deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  /*落空类过渡动画*/
+  transition: all 1s linear;
+}
+@keyframes p3Circle1 {
+  0% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(75deg) rotateY(-60deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(75deg) rotateY(300deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+}
+@keyframes p3Circle2 {
+  0% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(75deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(75deg) rotateY(360deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+}
+@keyframes p3Circle3 {
+  0% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(75deg) rotateY(60deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(75deg) rotateY(420deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+}
+@keyframes p3Round {
+  from {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+  to {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+}
+.p3.current .p3-title {
+  transform: translateX(1000px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+.p3.current .p3-main,
+.p3.current .p3-main ul {
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(3) scaleY(3) scaleZ(3);
+}
+/********第四屏********/
+section.p4 {
+  perspective: 1000px;
+}
+section.p4 .p4-line {
+  width: 100%;
+  height: 230px;
+  position: absolute;
+  left: 0;
+  top: 58%;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+section.p4 .p4-line img:first-child {
+  position: absolute;
+  left: 10%;
+  bottom: -63px;
+  animation: lineMove 0.6s linear infinite;
+}
+section.p4 .p4-line img:last-child {
+  position: absolute;
+  left: 50%;
+  top: -63px;
+  animation: lineMove 1s linear infinite;
+}
+section.p4 .p4-main,
+section.p4 .p4-main ul {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -300px;
+  margin-top: -300px;
+  transform-style: preserve-3d;
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(22deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p4 .p4-main li,
+section.p4 .p4-main ul li {
+  position: absolute;
+  top: 15%;
+  left: 16%;
+}
+section.p4 .p4-main > li:nth-child(1),
+section.p4 .p4-main ul > li:nth-child(1) {
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p4 .p4-main > li:nth-child(1) img,
+section.p4 .p4-main ul > li:nth-child(1) img {
+  animation: p4Circle 60s linear infinite;
+}
+section.p4 .p4-main > li:nth-child(2),
+section.p4 .p4-main ul > li:nth-child(2) {
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p4 .p4-main > li:nth-child(2) img,
+section.p4 .p4-main ul > li:nth-child(2) img {
+  animation: p4Circle 20s linear infinite;
+}
+section.p4 .p4-main > li:nth-child(3),
+section.p4 .p4-main ul > li:nth-child(3) {
+  transform: translateX(0px) translateY(0px) translateZ(-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p4 .p4-main > li:nth-child(3) img,
+section.p4 .p4-main ul > li:nth-child(3) img {
+  animation: p4Circle 10s linear infinite;
+}
+section.p4 .p4-main > li:nth-child(4),
+section.p4 .p4-main ul > li:nth-child(4) {
+  transform: translateX(0px) translateY(0px) translateZ(-60px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p4 .p4-main > li:nth-child(4) img,
+section.p4 .p4-main ul > li:nth-child(4) img {
+  animation: p4Circle 5s linear infinite;
+}
+section.p4 .p4-main > li:nth-child(5),
+section.p4 .p4-main ul > li:nth-child(5) {
+  transform: translateX(0px) translateY(0px) translateZ(20px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+section.p4 .p4-main > li:nth-child(5) img,
+section.p4 .p4-main ul > li:nth-child(5) img {
+  animation: p4Circle 3s linear infinite;
+}
+section.p4 .p4-title {
+  position: absolute;
+  top: 40%;
+  left: 70%;
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(30deg) rotateY(0deg) rotateZ(0deg) scaleX(1.2) scaleY(1.2) scaleZ(1.2);
+}
+section.p4 .p4-tag {
+  position: absolute;
+  left: 15%;
+  top: 45%;
+  color: #fff;
+}
+@keyframes lineMove {
+  from {
+    transform: translateX(-1000px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+  to {
+    transform: translateX(1000px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+}
+@keyframes p4Circle {
+  from {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+  to {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1);
+  }
+}
+/*落空过渡类*/
+.p4 .p4-tag,
+.p4 .p4-title,
+.p4 .p4-main {
+  transition: all 1s linear;
+}
+.p4.current .p4-title {
+  transform: translateX(1000px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+.p4.current .p4-tag {
+  transform: translateX(-1000px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+}
+.p4.current .p4-main {
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(4) scaleY(4) scaleZ(4);
+}
+/********第五屏********/
+section.p5 {
+  perspective: 1000px;
+}
+section.p5 .p5-main,
+section.p5 .p5-main ul {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -300px;
+  margin-top: -300px;
+}
+section.p5 .p5-main > li,
+section.p5 .p5-main ul > li {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.p5 .p5-main > li:nth-child(1),
+section.p5 .p5-main ul > li:nth-child(1) {
+  width: 305px;
+  height: 305px;
+  margin-left: -152px;
+  margin-top: -152px;
+  background: url("../images/page5_bubble_glow.png") no-repeat;
+  transition: all 1s linear;
+}
+section.p5 .p5-main > li:nth-child(2),
+section.p5 .p5-main ul > li:nth-child(2) {
+  width: 210px;
+  height: 210px;
+  margin-left: -272px;
+  margin-top: -234px;
+  background: url("../images/page5_bubble.png") no-repeat;
+  background-size: cover;
+  transition: all 1s linear;
+}
+section.p5 .p5-main > li:nth-child(3),
+section.p5 .p5-main ul > li:nth-child(3) {
+  width: 250px;
+  height: 250px;
+  margin-left: -324px;
+  margin-top: 70px;
+  background: url("../images/page5_bubble.png") no-repeat;
+  background-size: cover;
+  transition: all 1s linear;
+}
+section.p5 .p5-main > li:nth-child(4),
+section.p5 .p5-main ul > li:nth-child(4) {
+  width: 180px;
+  height: 180px;
+  margin-left: 175px;
+  margin-top: 50px;
+  background: url("../images/page5_bubble.png") no-repeat;
+  background-size: cover;
+  transition: all 1s linear;
+}
+section.p5 .p5-main > li:nth-child(5),
+section.p5 .p5-main ul > li:nth-child(5) {
+  width: 120px;
+  height: 120px;
+  margin-left: 190px;
+  margin-top: -210px;
+  background: url("../images/page5_bubble.png") no-repeat;
+  background-size: cover;
+  transition: all 1s linear;
+}
+section.p5 .p5-main > li:nth-child(6),
+section.p5 .p5-main ul > li:nth-child(6) {
+  width: 90px;
+  height: 90px;
+  margin-left: 280px;
+  margin-top: -145px;
+  background: url("../images/page5_bubble.png") no-repeat;
+  background-size: cover;
+  transition: all 1s linear;
+}
+section.p5 .p5-tag {
+  position: absolute;
+  left: 10%;
+  top: 45%;
+  color: #fff;
+  transition: all 1s linear;
+}
+section.p5 .p5-title {
+  position: absolute;
+  right: 0;
+  top: 45%;
+  transition: all 1s linear;
+}
+.p5.current .p5-title,
+.p5.current .p5-tag {
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(-90deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  transform-origin: 100% 100%;
+}
+.p5.current .p5-main li:nth-child(1) {
+  margin-left: -1500px;
+  margin-top: -200px;
+}
+.p5.current .p5-main li:nth-child(2) {
+  margin-left: -1000px;
+  margin-top: -700px;
+}
+.p5.current .p5-main li:nth-child(3) {
+  margin-left: -1500px;
+  margin-top: -200px;
+}
+.p5.current .p5-main li:nth-child(4) {
+  margin-left: 1500px;
+  margin-top: 450px;
+}
+.p5.current .p5-main li:nth-child(5) {
+  margin-left: 1200px;
+  margin-top: -700px;
+}
+.p5.current .p5-main li:nth-child(6) {
+  margin-left: 2000px;
+  margin-top: -200px;
+}
