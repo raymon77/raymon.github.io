@@ -15,16 +15,19 @@
 
 
 
-<meta name="description" content="90后双子座，喜欢音乐，写作，研究各种APP。强迫症患者，喜欢将事物整理得井井有条。网瘾晚期。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Raymon">
-<meta property="og:url" content="http://celinez.cn/about/index.html">
+<meta name="description" content="1.jQuery中的is(‘:visible’)是个啥东东，干啥的？:visible 选择器选取每个当前是可见的元素。除以下几种情况之外的元素即是可见元素：">
+<meta name="keywords" content="jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery中的is(&#39;:visible&#39;)与鼠标事件">
+<meta property="og:url" content="http://celinez.cn/2017/10/31/10.jQuery中的is('visible')/index.html">
 <meta property="og:site_name" content="Raymon&#39;s Blog">
-<meta property="og:description" content="90后双子座，喜欢音乐，写作，研究各种APP。强迫症患者，喜欢将事物整理得井井有条。网瘾晚期。">
-<meta property="og:updated_time" content="2017-06-11T12:11:56.611Z">
+<meta property="og:description" content="1.jQuery中的is(‘:visible’)是个啥东东，干啥的？:visible 选择器选取每个当前是可见的元素。除以下几种情况之外的元素即是可见元素：">
+<meta property="og:image" content="http://celinez.cn/img/visible.gif">
+<meta property="og:updated_time" content="2017-10-31T14:26:29.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Raymon">
-<meta name="twitter:description" content="90后双子座，喜欢音乐，写作，研究各种APP。强迫症患者，喜欢将事物整理得井井有条。网瘾晚期。">
+<meta name="twitter:title" content="jQuery中的is(&#39;:visible&#39;)与鼠标事件">
+<meta name="twitter:description" content="1.jQuery中的is(‘:visible’)是个啥东东，干啥的？:visible 选择器选取每个当前是可见的元素。除以下几种情况之外的元素即是可见元素：">
+<meta name="twitter:image" content="http://celinez.cn/img/visible.gif">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Raymon | Raymon&#39;s Blog</title>
+<title>jQuery中的is(&#39;:visible&#39;)与鼠标事件 | Raymon&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,7 +69,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -270,11 +273,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-10.jQuery中的is(&#39;visible&#39;)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/about/index.html" class="article-date">
-      <time datetime="2017-06-09T17:07:07.000Z" itemprop="datePublished">2017-06-10</time>
+      <a href="/2017/10/31/10.jQuery中的is('visible')/" class="article-date">
+      <time datetime="2017-10-31T13:49:14.000Z" itemprop="datePublished">2017-10-31</time>
 </a>
 
 
@@ -289,7 +292,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Raymon
+      jQuery中的is(&#39;:visible&#39;)与鼠标事件
     </h1>
   
 
@@ -299,6 +302,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -306,26 +313,31 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
-
-
-          
-        <p>90后双子座，喜欢音乐，写作，研究各种APP。<br><br>强迫症患者，喜欢将事物整理得井井有条。<br><br>网瘾晚期。</p>
+        <h3 id="1-jQuery中的is-‘-visible’-是个啥东东，干啥的？"><a href="#1-jQuery中的is-‘-visible’-是个啥东东，干啥的？" class="headerlink" title="1.jQuery中的is(‘:visible’)是个啥东东，干啥的？"></a>1.jQuery中的is(‘:visible’)是个啥东东，干啥的？</h3><p>:visible 选择器选取每个当前是可见的元素。<br>除以下几种情况之外的元素即是可见元素：</p>
+<a id="more"></a>
+<ul>
+<li>设置为 display:none</li>
+<li>type=”hidden” 的表单元素</li>
+<li>Width 和 height 设置为 0</li>
+<li>隐藏的父元素（同时隐藏所有子元素）</li>
+</ul>
+<p>来个demo比较好理解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</div><div class="line">    &lt;title&gt;jqeury操作显示/隐藏&lt;/title&gt;</div><div class="line">    &lt;style type=&quot;text/css&quot;&gt;</div><div class="line">        h1 &#123;</div><div class="line">            margin: 0;</div><div class="line">            padding: 0;</div><div class="line">        &#125;</div><div class="line">        #card &#123;</div><div class="line">            background: #ccc;</div><div class="line">            padding: 20px;</div><div class="line">            margin: 10px 0;</div><div class="line">            display: none;</div><div class="line">        &#125;</div><div class="line">        #card.active &#123;</div><div class="line">            background: #555;</div><div class="line">            color: #fff;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;button id=&quot;card-trigger&quot;&gt;显示/隐藏公告&lt;/button&gt;</div><div class="line">    &lt;div id=&quot;card&quot;&gt;</div><div class="line">        &lt;h1&gt;公告&lt;/h1&gt;</div><div class="line">        He took hold of the line carefully so that it did not fit into any of the fresh line cuts and shifted his weight so that he could put his left hand into the sea on the other side of the skiff.</div><div class="line">        When he thought that he knew that he was not being clear-headed and he thought he should chew some more of the dolphin.</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;script src=&quot;jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">        var card = $(&apos;#card&apos;);</div><div class="line">        var cardTrigger = $(&apos;#card-trigger&apos;);</div><div class="line">        cardTrigger.on(&apos;click&apos;, function() &#123;</div><div class="line">            if (card.is(&apos;:visible&apos;)) &#123;</div><div class="line">                // card.hide();</div><div class="line">                card.slideUp();</div><div class="line">            &#125; else &#123;</div><div class="line">                // card.show();</div><div class="line">                card.slideDown();</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line"></div><div class="line">        card.on(&apos;mouseenter&apos;, function() &#123;</div><div class="line">            card.addClass(&apos;active&apos;);</div><div class="line">            console.log(1);</div><div class="line">        &#125;)</div><div class="line">        card.on(&apos;mouseleave&apos;, function() &#123;</div><div class="line">            card.removeClass(&apos;active&apos;);</div><div class="line"></div><div class="line">        &#125;)</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>效果图如下：<br><img src="/img/visible.gif" alt="jq-visible"></p>
+<ul>
+<li>例：<code>card.is(&#39;:visible&#39;)</code>是指可见的card元素.</li>
+<li>如果card元素可见，则调用card.slideUp();使之隐藏.</li>
+<li>else则是card元素不可见的情况下，调用card.slideDown()；使之显示.</li>
+<li>类似的写法还有card.is(‘:first’);card.is(‘:last’);之类的,类似于css的伪类a:hover</li>
+</ul>
+<h3 id="2-mouseover、mouseout和mouseenter、mouseleave之间的区别？"><a href="#2-mouseover、mouseout和mouseenter、mouseleave之间的区别？" class="headerlink" title="2.mouseover、mouseout和mouseenter、mouseleave之间的区别？"></a>2.mouseover、mouseout和mouseenter、mouseleave之间的区别？</h3><p>mouseover、mouseenter：事件在鼠标指针移动到指定元素上时触发。<br>mouseout、mouseleave：在鼠标指针移出元素上时触发事件。<br>区别：</p>
+<ul>
+<li>onmouseover和mouseout事件在鼠标指针进入元素时触发,但是在其子元素上也会触发(例:p span)，也就是会触发常说的冒泡事件。</li>
+<li>mouseenter和mouseleave事件则不支持冒泡，所以不会触发冒泡。</li>
+</ul>
+<blockquote>
+<p>终止事件冒泡有个简单的方法：在相应的处理函数内，加入  event.stopPropagation()   ,终止事件的广播分发，这样事件停留在本节点，不会再往外传播了。</p>
+</blockquote>
 
       
     </div>
@@ -333,10 +345,59 @@
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/10/31/10.jQuery中的is('visible')/">jQuery中的is(&#39;:visible&#39;)与鼠标事件</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Raymon</a></p>
+        <p><span>发布时间:</span>2017-10-31, 21:49:14</p>
+        <p><span>最后更新:</span>2017-10-31, 22:26:29</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/10/31/10.jQuery中的is('visible')/" title="jQuery中的is(&#39;:visible&#39;)与鼠标事件">http://celinez.cn/2017/10/31/10.jQuery中的is(&#39;visible&#39;)/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://celinez.cn/2017/10/31/10.jQuery中的is(&#39;visible&#39;)/　　作者: Raymon" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/07/31/09.Demo集中营/">
+                    09.Demo集中营
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jQuery中的is-‘-visible’-是个啥东东，干啥的？"><span class="toc-number">1.</span> <span class="toc-text">1.jQuery中的is(‘:visible’)是个啥东东，干啥的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-mouseover、mouseout和mouseenter、mouseleave之间的区别？"><span class="toc-number">2.</span> <span class="toc-text">2.mouseover、mouseout和mouseenter、mouseleave之间的区别？</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -354,7 +415,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Raymon　| Raymon's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"jQuery中的is(':visible')与鼠标事件　| Raymon's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -383,6 +444,24 @@
 </section>
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/07/31/09.Demo集中营/" title="下一篇: 09.Demo集中营">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/10.jQuery中的is('visible')/">jQuery中的is(':visible')与鼠标事件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/09.Demo集中营/">09.Demo集中营</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/08.如果博客突然挂了/">如果博客突然挂了</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/11/07.Gulp构建项目小结/">Gulp构建项目小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/19/06-关于angular的十问十答-二/">关于angular的十问十答(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/05.关于Angular的十问十答-一/">关于Angular的十问十答(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/04.Anguluar的基本使用/">Anguluar的基本基本概念(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/02.浏览器和网页/">01：初识浏览器和网页</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/11/03.H5技能树/">H5技能树</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/01.MarkDow-语法扫盲/">MarkDown 语法扫盲</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/Hello-World/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/welcome/">Welcome To Raymon's Blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/hexo/">Hexo</a></li></ul>
 
 
 
